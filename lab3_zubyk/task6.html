@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання 6</title>
+  <script>
+    let fruitsVisible = false;
+    let vegetablesVisible = false;
+
+    function init() {
+      let str = "";
+      str += "<a href='javascript:toggleFruits()'>fruits</a>";
+      str += "<div id='subFruits'></div>";
+      str += "<a href='javascript:toggleVegetables()'>vegetables</a>";
+      str += "<div id='subVegetables'></div>";
+      document.getElementById("container").innerHTML = str;
+    }
+
+    function toggleFruits() {
+      let str = "";
+      if (!fruitsVisible) {
+        str += "apple<br>";
+        str += "pineapple<br>";
+        str += "appricot<br>";
+        str += "pear<br>";
+        str += "lemon<br>";
+      }
+      fruitsVisible = !fruitsVisible;
+      document.getElementById("subFruits").innerHTML = str;
+    }
+
+    function toggleVegetables() {
+      let str = "";
+      if (!vegetablesVisible) {
+        str += "potatoes<br>";
+        str += "beetroot<br>";
+        str += "carrots<br>";
+        str += "pear<br>";
+      }
+      vegetablesVisible = !vegetablesVisible;
+      document.getElementById("subVegetables").innerHTML = str;
+    }
+  </script>
+</head>
+<body onload="init()">
+    <a href="lab3.html">Вернутись на головну сторінку лабораторної</a>
+  <div id="container"></div>
+</body>
+</html>

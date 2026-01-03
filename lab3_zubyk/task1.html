@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання 1</title>
+  <script>
+    function calculateArea() {
+      let side = parseFloat(document.getElementById("side").value);
+      let height = parseFloat(document.getElementById("height").value);
+      let result = document.getElementById("result");
+
+      if (side > 0 && height > 0) {
+        result.innerHTML = side * height / 2.0;
+      } else {
+        result.innerHTML = "0";
+      }
+    }
+  </script>
+</head>
+<body>
+    <a href="lab3.html">Вернутись на сторінку лабораторної</a>
+  <h2>Розрахунок площі трикутника</h2>
+  <label>Сторона: 
+    <input type="number" id="side" oninput="calculateArea()">
+  </label> <br><br>
+  <label>Висота: 
+    <input type="number" id="height" oninput="calculateArea()">
+  </label> <br><br>
+  <p>Площа: <span id="result">0</span></p>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання 5</title>
+  <script>
+    let totalQuestions = 5;
+    let currentQuestion = 0;
+    let correctAnswers = 0;
+    let currentAnswer = 0;
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function nextTask() {
+      if (currentQuestion >= totalQuestions) {
+        document.getElementById("task").innerHTML = "Тест завершено!";
+        return;
+      }
+
+      let a = randomInt(0, 9);
+      let b = randomInt(0, 9);
+      let ops = ["+", "-", "*", "/"];
+      let op = ops[randomInt(0, ops.length - 1)];
+      if (op === "/" && b === 0) b = 1;
+
+      let expression = `${a} ${op} ${b}`;
+      currentAnswer = eval(expression);
+      if (op === "/") currentAnswer = +currentAnswer.toFixed(2);
+
+      document.getElementById("task").innerHTML = 
+        `Завдання ${currentQuestion + 1}: ${expression} = ?`;
+      document.getElementById("answer").value = "";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    function checkAnswer() {
+      if (currentQuestion >= totalQuestions) return;
+      let userAnswer = document.getElementById("answer").value;
+
+      if (userAnswer === "") {
+        document.getElementById("result").innerHTML = "Введіть відповідь!";
+        return;
+      }
+
+      if (Math.abs(userAnswer - currentAnswer) < 0.01) {
+        document.getElementById("result").innerHTML = "Правильно!";
+        correctAnswers++;
+      } else {
+        document.getElementById("result").innerHTML = 
+          `Помилка, правильна відповідь: ${currentAnswer}`;
+      }
+
+      currentQuestion++;
+      document.getElementById("score").innerHTML = 
+        `Рахунок: ${correctAnswers}/${currentQuestion}`;
+    }
+  </script>
+</head>
+<body>
+    <a href="lab3.html">Вернутись на головну сторінку лабораторної</a><br><br>
+  <p id="task">Натисніть «Наступне завдання»</p>
+  <input type="text" id="answer">
+  <button onclick="checkAnswer()">Перевірити</button>
+  <button onclick="nextTask()">Наступне завдання</button>
+  <p id="result"></p>
+  <p id="score">Рахунок: 0/0</p>
+</body>
+</html>

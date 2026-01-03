@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання 4</title>
+  <script>
+    let images = ['images/image1.jpg','images/image2.jpg','images/image3.jpg','images/image4.jpg'];
+    let currentIndex = 0;
+
+    function showImage(index) {
+      document.getElementById("image").src = images[index];
+    }
+
+    function nextImage() {
+      currentIndex++;
+      if (currentIndex >= images.length) currentIndex = 0;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex--;
+      if (currentIndex < 0) currentIndex = images.length - 1;
+      showImage(currentIndex);
+    }
+  </script>
+</head>
+<body onload="showImage(currentIndex)">
+    <a href="lab3.html">Вернутись на головну сторінку лабораторної</a><br><br>
+  <img id="image" src="" alt="Зображення" width="300"><br>
+  <button onclick="prevImage()">Назад</button>
+  <button onclick="nextImage()">Вперед</button>
+</body>
+</html>
